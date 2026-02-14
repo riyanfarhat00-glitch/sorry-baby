@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forgive Me My Cow 🤍</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #ffd1ff, #a18cd1);
+    background-size: 400% 400%;
+    animation: gradientBG 12s ease infinite;
+    text-align: center;
+    overflow-x: hidden;
+    color: white;
+}
+
+@keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+.container {
+    padding: 60px 20px;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+#typeText {
+    font-size: 20px;
+    max-width: 600px;
+    margin: 20px auto;
+    min-height: 120px;
+}
+
+button {
+    padding: 12px 22px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    margin: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.yesBtn {
+    background: white;
+    color: #ff4d6d;
+}
+
+.yesBtn:hover {
+    background: #ff4d6d;
+    color: white;
+}
+
+#finalMessage {
+    display: none;
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+/* Floating hearts */
+.heart {
+    position: fixed;
+    bottom: -10px;
+    animation: floatUp 6s linear infinite;
+}
+
+@keyframes floatUp {
+    0% {transform: translateY(0); opacity: 1;}
+    100% {transform: translateY(-100vh); opacity: 0;}
+}
+
+/* Confetti */
+.confetti {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    top: -10px;
+    animation: fall 4s linear forwards;
+}
+
+@keyframes fall {
+    to { transform: translateY(100vh) rotate(720deg); opacity: 0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>I'm Really Sorry My Beautiful Cow 🐄🤍</h1>
+    
+    <div id="typeText"></div>
+
+    <div id="buttons" style="display:none;">
+        <h2>Will you forgive your Panda? 🐼💖</h2>
+        <button class="yesBtn" onclick="forgive()">Yes ❤️</button>
+        <button class="yesBtn" onclick="forgive()">Of Course Yes 😌</button>
+    </div>
+
+    <div id="finalMessage">
+        YAYYYY 😭💞 <br>
+        I Promise No More Pranks… <br>
+        Only Real Love Forever 🐼💕🐄
+    </div>
+</div>
+
+<audio autoplay loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+</audio>
+
+<script>
+const text = "My love, when I said it was a prank, I didn’t mean to hurt you. I’m really sorry if I made your heart feel even a little heavy. You are too precious to me. My love is real, my feelings are real, and I never want to lose your smile. Please forgive your Panda because without his Cow… he is nothing. 🐼🤍🐄";
+let i = 0;
+
+function typeWriter() {
+    if (i < text.length) {
+        document.getElementById("typeText").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 40);
+    } else {
+        document.getElementById("buttons").style.display = "block";
+    }
+}
+
+typeWriter();
+
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 15 + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => { heart.remove(); }, 6000);
+}, 500);
+
+function forgive() {
+    document.getElementById("finalMessage").style.display = "block";
+    for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.backgroundColor = "hsl(" + Math.random() * 360 + ",100%,70%)";
+        document.body.appendChild(confetti);
+        setTimeout(() => { confetti.remove(); }, 4000);
+    }
+}
+</script>
+
+</body>
+</html>
